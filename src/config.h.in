@@ -1,0 +1,16 @@
+/* src/config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* whether fpsetprec is present and usable */
+#undef HAVE_FPSETPREC
+
+/* whether FPU control word can be manipulated by inline assembler */
+#undef HAVE_FPU_INLINE_ASM_X86
+
+/* whether _controlfp is present usable */
+#undef HAVE__CONTROLFP
+
+/* whether _controlfp_s is present and usable */
+#undef HAVE__CONTROLFP_S
+
+/* whether _FPU_SETCW is present and usable */
+#undef HAVE__FPU_SETCW

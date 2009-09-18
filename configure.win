@@ -1,0 +1,8 @@
+# assumption: x86 cpu and MinGW compiler used for every Windows system!
+# --> inline assembler code works and is needed!
+# this assumption is NOT checked!
+# (if you read this and know how to check, please tell me -> m@rtinbecker.de
+
+echo "  configure.win32..."
+echo "  creating src/config.h..."
+echo "#define HAVE_FPU_INLINE_ASM_X86 1" > src/config.h

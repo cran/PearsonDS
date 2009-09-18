@@ -1,0 +1,18 @@
+TODO:
+=====
+
+v 0.90:
+-------
+
+* improve ML estimation
+  - use analytical solutions (if available)
+  - use analytical gradient  (if available)
+  - exclude 'border' types 0,II,III,V,VII (optionally?)
+
+* use Smith's formula for DDcomplex/QDcomplex divisions
+
+* allow vector-valued parameters for Pearson type IV distributions
+
+* export (and document!) more functions, especially F21
+
+* more flexibility (labels, limits, ...) for pearsonDiagram

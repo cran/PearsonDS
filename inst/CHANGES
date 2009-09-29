@@ -1,3 +1,10 @@
+  0.91 (29.09.2009)
+  
+  bug fix: 
+  autoconf/configure mechanism was messed up -> no MacOS X binary on CRAN
+  Many thanks to Simon Urbanek <simon.urbanek@r-project.org> for his valuable
+  help (and autoconf lesson)!
+
   0.90 (16.09.2009) 
   
   initial release

@@ -204,16 +204,20 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
   if (missing(params)) params <- c(m,nu,location,scale)
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
-    stop("vector-valued parameters not (yet) allowed")                        
-  if (isTRUE(any(m<8,m>156,!.hasGSL))) {
-    res <- .ppearsonIVint(q,params=params,tol=tol,...)
-  } else if (isTRUE(all(m>28+0.72*nu,m> -150+3.75*nu,m<5+1.85*nu))) {
-    res <- .ppearsonIVold(q,params=params,tol=tol,...)
-  } else if (isTRUE(m>28+0.72*nu)) {
-    res <- .ppearsonIVint(q,params=params,tol=tol,...)
-  } else {
-    res <- .ppearsonIVf21(q,params=params,tol=tol,...)
-  }
+    stop("vector-valued parameters not (yet) allowed")      
+  res <- numeric(length(q))
+  res[is.na(q)] <- q[is.na(q)]                    
+  if (!all(is.na(q))) {
+    if (isTRUE(any(m<8,m>156,!.hasGSL))) {
+      res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
+    } else if (isTRUE(all(m>28+0.72*nu,m> -150+3.75*nu,m<5+1.85*nu))) {
+      res[!is.na(q)] <- .ppearsonIVold(q[!is.na(q)],params=params,tol=tol,...)
+    } else if (isTRUE(m>28+0.72*nu)) {
+      res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
+    } else {
+      res[!is.na(q)] <- .ppearsonIVf21(q[!is.na(q)],params=params,tol=tol,...)
+    }
+  }  
   if (!lower.tail) res <- 1-res
   if (log.p)       res <- log(res)
   res
@@ -228,14 +232,15 @@ function(p,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
     stop("vector-valued parameters not (yet) allowed")          
   if (log.p)       p <- exp(p)
   if (!lower.tail) p <- 1-p                
-  ind   <- (0<p)&(p<1)
+  ind   <- (0<p)&(p<1)&(!is.na(p))
   modus <- location - scale*nu/(2*m)
   n     <- length(p)
   res   <- numeric(n)
-  res[p<0]  <- NaN
-  res[p>1]  <- NaN
-  res[p==0] <- -Inf
-  res[p==1] <- Inf
+  res[is.na(p)] <- p[is.na(p)]
+  res[p<0]      <- NaN
+  res[p>1]      <- NaN
+  res[p==0]     <- -Inf
+  res[p==1]     <- Inf
   for (i in seq_len(n)[ind]) {
     xold  <- modus
     numit <- 0

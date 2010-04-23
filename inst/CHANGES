@@ -1,3 +1,12 @@
+  0.92 (23.04.2010)
+  
+  bug fix:
+  NAs and NaNs were not handled properly in ppearsonIV and qpearsonIV
+
+  (documentation) bug fix:
+  typo in the density function for Pearson type VI (only pdf-manual)
+  many thanks to Young Hwa Sung for reporting the typo!
+
   0.91 (29.09.2009)
   
   bug fix: 

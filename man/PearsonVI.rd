@@ -70,7 +70,7 @@ rpearsonVI(n, a, b, location, scale, params)
   \code{scale}\eqn{=s} and \code{location}\eqn{=\lambda}{=lambda} 
   is given by
   \deqn{f(x)=\frac{\Gamma(a+b)}{|s|\Gamma(a)\Gamma(b)}\left(\frac{x-\lambda}{s}
-  \right)^{a-1}\left(1-\frac{x-\lambda}{s}\right)^{-a-b}}{f(x)=Gamma(a+b)/
+  \right)^{a-1}\left(1+\frac{x-\lambda}{s}\right)^{-a-b}}{f(x)=Gamma(a+b)/
   (|s|Gamma(a)Gamma(b))((x-lambda)/s)^(a-1)(1+(x-lambda)/s)^(-a-b)}
   for \eqn{a>0}, \eqn{b>0}, \eqn{s\ne 0}{s<>0}, 
   \eqn{\frac{x-\lambda}{s}>0}{(x-lambda)/s>0}.

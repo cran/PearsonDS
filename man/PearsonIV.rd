@@ -159,7 +159,7 @@ rpearsonIV(n, m, nu, location, scale, params)
 
   [2] Heinrich, J. (2004) \emph{A Guide to the Pearson Type IV Distribution}, 
   Univ. Pennsylvania, Philadelphia, Tech. Rep. CDF/Memo/Statistics/Public/6820
-  \url{http://www-cdf.fnal.gov/publications/cdf6820_pearson4.pdf}
+  \url{http://www-cdf.fnal.gov/physics/statistics/notes/cdf6820_pearson4.pdf}
 
   [3] Hida, Y., X. S. Li and D. H. Bailey (2000) 
   \emph{Algorithms for quad-double precision floating point arithmetic}, 

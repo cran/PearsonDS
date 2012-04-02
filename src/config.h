@@ -1,1 +1,0 @@
-#define HAVE_FPU_INLINE_ASM_X86 1

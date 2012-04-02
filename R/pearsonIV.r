@@ -7,6 +7,7 @@ function(x,m,nu,location,scale,params,log=FALSE) {
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")                        
 #  stopifnot((scale>0)&&(m>0.5))
+  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
   logspace <- TRUE                                                              # make this an input parameter?
   if (logspace) {
     if (.hasGSL) {
@@ -40,6 +41,7 @@ function(n,m,nu,location,scale,params) {
   if (!missing(params)) { m <- params[[1]]; nu <- params[[2]]; 
                           location <- params[[3]]; scale <- params[[4]] }
 #  stopifnot((scale>0)&&(m>0.5))
+  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
   logspace <- TRUE                                                              # make this an input parameter?
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")                        
@@ -160,23 +162,24 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")
-    modus <- location - scale*nu/(2*m)
-    res   <- numeric(length(q))
-    ind   <- q>modus
-    if (.hasGSL) {
-      k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
-            Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
-    } else {
-      k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
-    }
-    intfn <- function(x) exp(k-m*log(1+((x-location)/scale)^2)-nu*
-                         atan((x-location)/scale))
-    if (sum(ind)>0) res[ind] <-
-      sapply(q[ind],function(x) 1-integrate(function(z) intfn(z),
-                                  lower=x,upper=+Inf,rel.tol=tol)$value)
-    if (sum(!ind)>0) res[!ind] <-
-      sapply(q[!ind],function(x) integrate(function(z) intfn(z),
-                                 lower=-Inf,upper=x,rel.tol=tol)$value)
+  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
+  modus <- location - scale*nu/(2*m)
+  res   <- numeric(length(q))
+  ind   <- q>modus
+  if (.hasGSL) {
+    k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
+          Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
+  } else {
+    k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+  }
+  intfn <- function(x) exp(k-m*log(1+((x-location)/scale)^2)-nu*
+                       atan((x-location)/scale))
+  if (sum(ind)>0) res[ind] <-
+    sapply(q[ind],function(x) 1-integrate(function(z) intfn(z),
+                                lower=x,upper=+Inf,rel.tol=tol)$value)
+  if (sum(!ind)>0) res[!ind] <-
+    sapply(q[!ind],function(x) integrate(function(z) intfn(z),
+                               lower=-Inf,upper=x,rel.tol=tol)$value)
   if (!lower.tail) res <- 1-res
   if (log.p)       res <- log(res)
   res
@@ -205,6 +208,7 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")      
+  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
   res <- numeric(length(q))
   res[is.na(q)] <- q[is.na(q)]                    
   if (!all(is.na(q))) {

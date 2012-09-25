@@ -53,7 +53,8 @@ Martin Becker \email{martin.becker@mx.uni-saarland.de}
   \code{\link{PearsonDS-package}},
   \code{\link[PearsonDS]{Pearson}},
   \code{\link{pearsonFitML}},
-  \code{\link{pearsonMoments}}
+  \code{\link{pearsonMoments}},
+  \code{\link{pearsonMSC}}
 }
 \examples{
 ## Define moments of distribution

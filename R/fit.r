@@ -112,16 +112,24 @@ pearsonVIIfindM <- function(mean,variance,skewness,kurtosis,moments) {
 empMoments <- function(x) {
   n <- length(x)
   mmm <- mean(x)
-  vvv <- var(x)
+  vvv <- var(x)*(n-1)/n
   if (vvv>0) sss <- sum((x-mmm)^3/sqrt(vvv)^3)/n else sss <- 0
   if (vvv>0) kkk <- sum((x-mmm)^4/vvv^2)/n else kkk <- 0
   c(mean=mmm,variance=vvv,skewness=sss,kurtosis=kkk)
 }
 
-pearson0fitML <- function(x,...) {
-  sval  <- pearson0findM(moments=empMoments(x))[-1]
-  tfunc <- function(sval) -sum(dpearson0(x,params=sval,log=TRUE))
-  nlminb(sval,tfunc,lower=c(-Inf,0),upper=c(Inf,Inf),...)
+pearson0fitML <- function(x,...) {                                              # exact MLE available, "fake" nlminb output...
+#  sval  <- pearson0findM(moments=empMoments(x))[-1]
+#  tfunc <- function(sval) -sum(dpearson0(x,params=sval,log=TRUE))
+#  nlminb(sval,tfunc,lower=c(-Inf,0),upper=c(Inf,Inf),...)
+  n    <- length(x)
+  Mean <- mean(x)
+  Sd   <- sd(x)*sqrt((n-1)/n)
+  list(par         = c(mean=Mean,sd=Sd),
+       objective   = -sum(dnorm(x,mean=Mean,sd=Sd,log=TRUE)),
+       convergence = 0, iterations = 1, 
+       evaluations = c(`function`=1,gradient=0),
+       message     = NULL)
 }
 
 pearsonIfitML <- function(x,...) {
@@ -133,7 +141,10 @@ pearsonIfitML <- function(x,...) {
     sval[[3]] <- max(sval[[3]],x)+0.1
     sval[[4]] <- min(sval[[4]],x-sval[[3]])-0.1
   }
-  tfunc <- function(sval) -sum(dpearsonI(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonI(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  }  
   nlminb(sval,tfunc,lower=c(0,0,-Inf,-Inf),upper=c(Inf,Inf,Inf,Inf),...)
 }
 
@@ -146,7 +157,10 @@ pearsonIIfitML <- function(x,...) {
     sval[[2]] <- max(sval[[2]],x)+0.01
     sval[[3]] <- min(sval[[3]],x-sval[[2]])-0.01
   }
-  tfunc <- function(sval) -sum(dpearsonII(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonII(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  }      
   nlminb(sval,tfunc,lower=c(0,-Inf,-Inf),upper=c(Inf,Inf,Inf),...)
 }
 
@@ -154,13 +168,19 @@ pearsonIIIfitML <- function(x,...) {
   sval  <- pearsonIIIfindM(moments=empMoments(x))[-1]
   if (sval[[3]]>0) sval[[2]] <- min(sval[[2]],x)-0.01 else 
                    sval[[2]] <- max(sval[[2]],x)+0.01
-  tfunc <- function(sval) -sum(dpearsonIII(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonIII(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  }      
   nlminb(sval,tfunc,lower=c(0,-Inf,-Inf),upper=c(Inf,Inf,Inf),...)
 }
 
 pearsonIVfitML <- function(x,...) {
   sval  <- pearsonIVfindM(moments=empMoments(x))[-1]
-  tfunc <- function(sval) -sum(dpearsonIV(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonIV(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  }      
   nlminb(sval,tfunc,lower=c(0.5,-Inf,-Inf,0),upper=c(Inf,Inf,Inf,Inf),...) 
 }
 
@@ -168,7 +188,10 @@ pearsonVfitML <- function(x,...) {
   sval  <- pearsonVfindM(moments=empMoments(x))[-1]
   if (sval[[3]]>0) sval[[2]] <- min(sval[[2]],x)-0.01 else 
                    sval[[2]] <- max(sval[[2]],x)+0.01
-  tfunc <- function(sval) -sum(dpearsonV(x,params=sval,log=TRUE))
+  tfunc <- function(sval) { 
+    tmp <- -sum(dpearsonV(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  } 
   nlminb(sval,tfunc,lower=c(0,-Inf,-Inf),upper=c(Inf,Inf,Inf),...)
 }
 
@@ -176,19 +199,25 @@ pearsonVIfitML <- function(x,...) {
   sval  <- pearsonVIfindM(moments=empMoments(x))[-1]
   if (sval[[4]]>0) sval[[3]] <- min(sval[[3]],x)-0.01 else 
                    sval[[3]] <- max(sval[[3]],x)+0.01
-  tfunc <- function(sval) -sum(dpearsonVI(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonVI(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  } 
   nlminb(sval,tfunc,lower=c(0,0,-Inf,-Inf),upper=c(Inf,Inf,Inf,Inf),...)
 }
 
 pearsonVIIfitML <- function(x,...) {
   sval  <- pearsonVIIfindM(moments=empMoments(x))[-1]
-  tfunc <- function(sval) -sum(dpearsonVII(x,params=sval,log=TRUE))
+  tfunc <- function(sval) {
+    tmp <- -sum(dpearsonVII(x,params=sval,log=TRUE))
+    if (is.na(tmp)) +Inf else tmp
+  } 
   nlminb(sval,tfunc,lower=c(0,-Inf,-Inf),upper=c(Inf,Inf,Inf),...)
 }
 
 pearsonFitML <- function(x,...) {
   suffix <- c("0","I","II","III","IV","V","VI","VII")
-  res <- list()
+  res <- vector("list",length(suffix))
   obj <- numeric(length(suffix))
   for (i in seq_along(suffix)) {
     fname  <- paste("pearson",suffix[i],"fitML",sep="")
@@ -286,4 +315,31 @@ pearsonFitM <- function(mean,variance,skewness,kurtosis,moments) {
     sca <-  c1
     return(list(type=3,shape=m+1,location=loc,scale=c1))                        # -> gamma(shape,scale)+location, TAKE CARE: scale maybe negativ!!!
   } 
+}
+
+pearsonMSC <- function(x,...) {
+  suffix <- c("0","I","II","III","IV","V","VI","VII")                           # names of distribution sub-classes
+  K      <- c(2,4,3,3,4,3,4,3)                                                  # number of estimated parameters
+  names(K) <- suffix
+  n      <- length(x)                                                           # number of observations
+  res    <- vector("list",length(suffix))
+  lnL    <- numeric(length(suffix))
+  names(lnL) <- suffix
+  for (i in seq_along(suffix)) {
+    fname    <- paste("pearson",suffix[i],"fitML",sep="")
+    res[[i]] <- do.call(fname,args=list(x=x,`...`=...))
+    lnL[i]   <- -res[[i]]$objective
+  }
+  AIC  <- 2*K-2*lnL
+  BIC  <- K*log(n)-2*lnL
+  AICc <- 2*K*n/(n-K-1)-2*lnL
+  HQ   <- 2*K*log(log(n))-2*lnL
+  fits <- lapply(res,function(x) x$par)
+  names(fits) <- suffix
+  for (i in seq_along(fits)) fits[[i]] <- c(type=i-1,fits[[i]])
+  MSCs <- rbind("ML"=-2*lnL,AIC=AIC,AICc=AICc,BIC=BIC,HQC=HQ)
+  Best <- vector("list",nrow(MSCs))
+  names(Best) <- rownames(MSCs)
+  for (i in seq_along(Best)) Best[[i]] <- fits[[which.min(MSCs[i,])]]
+  list(MSCs=MSCs,logLik=lnL,FittedDistributions=fits,Best=Best)
 }

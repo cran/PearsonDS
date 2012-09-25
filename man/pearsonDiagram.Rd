@@ -34,7 +34,7 @@ pearsonDiagram(max.skewness = sqrt(14), max.kurtosis = 24,
 }
 }
 \value{
-  Nothing useful. Function called for it's side-effects.
+  Nothing useful. Function called for its side-effects.
 }
 \details{
   The label of the x-axis is \eqn{\beta_1}{beta[1]} for squared skewness and
@@ -47,7 +47,9 @@ pearsonDiagram(max.skewness = sqrt(14), max.kurtosis = 24,
   Wiley
 }
 \author{
-Martin Becker \email{martin.becker@mx.uni-saarland.de}
+Martin Becker \email{martin.becker@mx.uni-saarland.de} and
+Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
+
 }
 \seealso{
   \code{\link{PearsonDS-package}}

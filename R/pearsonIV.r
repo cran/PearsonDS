@@ -6,34 +6,40 @@ function(x,m,nu,location,scale,params,log=FALSE) {
                           location <- params[[3]]; scale <- params[[4]] }
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")                        
+  if ((scale>0)&&(m>0.5)) {
 #  stopifnot((scale>0)&&(m>0.5))
-  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
-  logspace <- TRUE                                                              # make this an input parameter?
-  if (logspace) {
-    if (.hasGSL) {
-      k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
-            Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
+    .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
+    logspace <- TRUE                                                              # make this an input parameter?
+    if (logspace) {
+      if (.hasGSL) {
+        k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
+              Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
+      } else {
+        k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+      }  
+      if (log) {
+        k-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
+      } else {
+        exp(k-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale))
+      }  
     } else {
-      k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
-    }  
-    if (log) {
-      k-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
-    } else {
-      exp(k-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale))
-    }  
+      if (.hasGSL) {
+        k <- exp(-0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*                         # improve?
+              Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m))
+      } else {
+        k <- .Call("PearsonIVnorm",m,nu,scale,package="PearsonDS")
+      }  
+      if (log) {
+        log(k)-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
+      } else {
+        k*(1+((x-location)/scale)^2)^(-m)*exp(-nu*atan((x-location)/scale))
+      }  
+    }
   } else {
-    if (.hasGSL) {
-      k <- exp(-0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*                         # improve?
-            Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m))
-    } else {
-      k <- .Call("PearsonIVnorm",m,nu,scale,package="PearsonDS")
-    }  
-    if (log) {
-      log(k)-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
-    } else {
-      k*(1+((x-location)/scale)^2)^(-m)*exp(-nu*atan((x-location)/scale))
-    }  
-  }
+    tmp <- rep(NaN,length(x))
+    tmp[is.na(x)&(!is.nan(x))] <- NA
+    tmp
+  }  
 }
 
 rpearsonIV <-
@@ -208,23 +214,29 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")      
-  .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
-  res <- numeric(length(q))
-  res[is.na(q)] <- q[is.na(q)]                    
-  if (!all(is.na(q))) {
-    if (isTRUE(any(m<8,m>156,!.hasGSL))) {
-      res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
-    } else if (isTRUE(all(m>28+0.72*nu,m> -150+3.75*nu,m<5+1.85*nu))) {
-      res[!is.na(q)] <- .ppearsonIVold(q[!is.na(q)],params=params,tol=tol,...)
-    } else if (isTRUE(m>28+0.72*nu)) {
-      res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
-    } else {
-      res[!is.na(q)] <- .ppearsonIVf21(q[!is.na(q)],params=params,tol=tol,...)
-    }
+  if ((scale>0)&&(m>0.5)) {
+    .hasGSL <- suppressWarnings(suppressPackageStartupMessages(require(gsl)))
+    res <- numeric(length(q))
+    res[is.na(q)] <- q[is.na(q)]                    
+    if (!all(is.na(q))) {
+      if (isTRUE(any(m<8,m>156,!.hasGSL))) {
+        res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
+      } else if (isTRUE(all(m>28+0.72*nu,m> -150+3.75*nu,m<5+1.85*nu))) {
+        res[!is.na(q)] <- .ppearsonIVold(q[!is.na(q)],params=params,tol=tol,...)
+      } else if (isTRUE(m>28+0.72*nu)) {
+        res[!is.na(q)] <- .ppearsonIVint(q[!is.na(q)],params=params,tol=tol,...)
+      } else {
+        res[!is.na(q)] <- .ppearsonIVf21(q[!is.na(q)],params=params,tol=tol,...)
+      }
+    }  
+    if (!lower.tail) res <- 1-res
+    if (log.p)       res <- log(res)
+    res
+  } else {
+    tmp <- rep(NaN,length(q))
+    tmp[is.na(q)&(!is.nan(q))] <- NA
+    tmp
   }  
-  if (!lower.tail) res <- 1-res
-  if (log.p)       res <- log(res)
-  res
 }
 
 qpearsonIV <-
@@ -234,29 +246,35 @@ function(p,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")          
-  if (log.p)       p <- exp(p)
-  if (!lower.tail) p <- 1-p                
-  ind   <- (0<p)&(p<1)&(!is.na(p))
-  modus <- location - scale*nu/(2*m)
-  n     <- length(p)
-  res   <- numeric(n)
-  res[is.na(p)] <- p[is.na(p)]
-  res[p<0]      <- NaN
-  res[p>1]      <- NaN
-  res[p==0]     <- -Inf
-  res[p==1]     <- Inf
-  for (i in seq_len(n)[ind]) {
-    xold  <- modus
-    numit <- 0
-    repeat {
-      numit <- numit + 1
-      dp    <- dpearsonIV(xold,m,nu,location,scale)
-      ttol  <- max(tol*1e-2*dp,.Machine$double.eps)
-      xnew  <- xold-(ppearsonIV(xold,m,nu,location,scale,tol=ttol,...)-p[i])/dp
-      if ((abs(xnew-xold)<tol)||(numit>30)) break                
-      xold <- xnew
+  if ((scale>0)&&(m>0.5)) {
+    if (log.p)       p <- exp(p)
+    if (!lower.tail) p <- 1-p                
+    ind   <- (0<p)&(p<1)&(!is.na(p))
+    modus <- location - scale*nu/(2*m)
+    n     <- length(p)
+    res   <- numeric(n)
+    res[is.na(p)] <- p[is.na(p)]
+    res[p<0]      <- NaN
+    res[p>1]      <- NaN
+    res[p==0]     <- -Inf
+    res[p==1]     <- Inf
+    for (i in seq_len(n)[ind]) {
+      xold  <- modus
+      numit <- 0
+      repeat {
+        numit <- numit + 1
+        dp    <- dpearsonIV(xold,m,nu,location,scale)
+        ttol  <- max(tol*1e-2*dp,.Machine$double.eps)
+        xnew  <- xold-(ppearsonIV(xold,m,nu,location,scale,tol=ttol,...)-p[i])/dp
+        if ((abs(xnew-xold)<tol)||(numit>30)) break                
+        xold <- xnew
+      }
+      res[i] <- xnew
     }
-    res[i] <- xnew
-  }
-  res
+    res
+  } else {
+    tmp <- rep(NaN,length(p))
+    tmp[is.na(p)&(!is.nan(p))] <- NA
+    tmp
+  }  
 }

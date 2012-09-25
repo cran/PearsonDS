@@ -15,4 +15,5 @@ export("pearsonFitML")
 export("pearsonMoments")
 export("pearsonDiagram")
 export("empMoments")
+export("pearsonMSC")
 

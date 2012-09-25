@@ -7,13 +7,14 @@ note <- sprintf("R package version %s", meta$Version)
 
 citEntry(entry = "Manual",
          title = "{PearsonDS}: Pearson Distribution System",
-         author = personList(as.person("Martin Becker")),
+         author = c(person("Martin","Becker",role=c("aut","cre"),email="martin.becker@mx.uni-saarland.de"),
+		            person("Stefan","Kl{\\\"o}\\ss{}ner",role="aut",email="S.Kloessner@mx.uni-saarland.de")),
          year = year,
          note = note,
          url = "http://CRAN.R-project.org/package=PearsonDS",
 
          textVersion =
-         paste("Martin Becker",
+         paste("Martin Becker and Stefan Klößner",
    	       sprintf("(%s).", year),	 
                "PearsonDS: Pearson Distribution System.",
 	       paste(note, ".", sep = ""),

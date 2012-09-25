@@ -1,3 +1,16 @@
+  0.94 (09.05.2012-25.09.2012)
+
+  ensure that functions to be minimized by nlminb do not return NA or NaN
+  any more (by replacing NA/NaN results with +Inf) because nlminb does
+  not work reliably with NA/NaN function values.
+  (Many thanks to Prof Brian Ripley for pointing this out)
+  
+  bug fix of pearsonDiagram (for max.skewness>=32 [squared.skewness=TRUE]
+  and max.skewnewss>=sqrt(32) [squared.skewness=FALSE])
+  
+  new function pearsonMSC for model selection purposes.
+  (suggestion/wish from Dr. Ross Larsen Ph.D) 
+
   0.93 (02.04.2012)
   
   caching of package gsl's availability status removed, because using

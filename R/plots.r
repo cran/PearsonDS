@@ -15,10 +15,11 @@ pearsonDiagram <- function(max.skewness=sqrt(14),max.kurtosis=24,
       tmp$x <- c(tmp$x,max.skewness^2)
       tmp$y <- c(tmp$y,max.kurtosis)
     }
-    tmp$x <- c(tmp$x,c(max.skewness^2,0)); tmp$y <- c(tmp$y,t3fn(c(max.skewness^2,0)))
+    tmp$x <- c(tmp$x,c(max.skewness^2,0))
+    tmp$y <- c(tmp$y,t3fn(c(max.skewness^2,0)))
     polygon(tmp,col="yellow")
 
-    tmp <- list(x=b1seq,y=t5fn(b1seq))                                          # type IV
+    tmp <- list(x = b1seq[b1seq<32], y = t5fn(b1seq[b1seq<32]))                 # type IV
     if (max(tmp$y)<max.kurtosis) {
       tmp$x <- c(tmp$x,max.skewness^2)
       tmp$y <- c(tmp$y,max.kurtosis)
@@ -31,10 +32,12 @@ pearsonDiagram <- function(max.skewness=sqrt(14),max.kurtosis=24,
       tmp$x <- c(tmp$x,max.skewness^2)
       tmp$y <- c(tmp$y,max.kurtosis)
     }
-    tmp$x <- c(tmp$x,rev(b1seq)); tmp$y <- c(tmp$y,t5fn(rev(b1seq)))
+    tmp$x <- c(tmp$x, rev(b1seq[b1seq<32]))
+    tmp$y <- c(tmp$y, t5fn(rev(b1seq[b1seq<32])))
     polygon(tmp,col="pink")
 
-    curve(t5fn(x),from=0,to=max.skewness^2,n=n,add=TRUE,col="blue",lwd=lwd)     # type V
+    curve(t5fn(x),from=0,to=min(31.999,max.skewness^2),n=n,add=TRUE,col="blue", # type V
+          lwd=lwd)     
     lines(c(0,max.skewness^2),c(1,1+max.skewness^2),col="black",lwd=lwd)        # no Pearson
     lines(c(0,0),c(1,3),col="orange",lwd=lwd,xpd=NA)                            # type II
     lines(c(0,0),c(3,max.kurtosis),col="cyan",lwd=lwd,xpd=NA)                   # type VII
@@ -54,12 +57,13 @@ pearsonDiagram <- function(max.skewness=sqrt(14),max.kurtosis=24,
     tmp$x <- c(tmp$x,rev(b1seq)); tmp$y <- c(tmp$y,t3fn(rev(b1seq^2)))
     polygon(tmp,col="yellow")
 
-    tmp <- list(x=b1seq,y=t5fn(b1seq^2))                                        # type IV
+    tmp <- list(x = b1seq[b1seq<sqrt(32)], y = t5fn(b1seq[b1seq<sqrt(32)]^2))   # type IV
     if (max(tmp$y)<max.kurtosis) {
       tmp$x <- c(tmp$x,max.skewness^2)
       tmp$y <- c(tmp$y,max.kurtosis)
     }
-    tmp$x <- c(tmp$x,0); tmp$y <- c(tmp$y,max.kurtosis)
+    tmp$x <- c(tmp$x,0) 
+    tmp$y <- c(tmp$y,max.kurtosis)
     polygon(tmp,col="lightcyan")
 
     tmp <- list(x=b1seq,y=t3fn(b1seq^2))                                        # type VI
@@ -67,12 +71,14 @@ pearsonDiagram <- function(max.skewness=sqrt(14),max.kurtosis=24,
       tmp$x <- c(tmp$x,max.skewness^2)
       tmp$y <- c(tmp$y,max.kurtosis)
     }
-    tmp$x <- c(tmp$x,rev(b1seq)); tmp$y <- c(tmp$y,t5fn(rev(b1seq^2)))
+    tmp$x <- c(tmp$x, rev(b1seq[b1seq<sqrt(32)]))
+    tmp$y <- c(tmp$y, t5fn(rev(b1seq[b1seq<sqrt(32)]^2)))
     polygon(tmp,col="pink")
 
     curve(tnofn(x^2),from=0,to=max.skewness,n=n,add=TRUE,col="black",lwd=lwd)   # no Pearson
     curve(t3fn(x^2),from=0,to=max.skewness,n=n,add=TRUE,col="red",lwd=lwd)      # type III
-    curve(t5fn(x^2),from=0,to=max.skewness^2,n=n,add=TRUE,col="blue", lwd=lwd)  # type V
+    curve(t5fn(x^2),from=0,to=min(sqrt(31.999),max.skewness^2),n=n,add=TRUE,    # type V 
+          col="blue", lwd=lwd)  
     lines(c(0,0),c(1,3),col="orange",lwd=lwd,xpd=NA)                            # type II
     lines(c(0,0),c(3,max.kurtosis),col="cyan",lwd=lwd,xpd=NA)                   # type VII
     points(0,3,pch=16,col="brown")                                              # type 0

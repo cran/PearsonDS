@@ -1,9 +1,9 @@
 Package: PearsonDS
 Type: Package
 Title: Pearson Distribution System
-Version: 0.93
-Date: 2012-04-02
-Author: Martin Becker
+Version: 0.94
+Date: 2012-09-25
+Author: Martin Becker and Stefan Klößner
 Maintainer: Martin Becker <martin.becker@mx.uni-saarland.de>
 Description: Implementation of the Pearson distribution system,
         including full support for the (d,p,q,r)-family of functions
@@ -12,6 +12,7 @@ Description: Implementation of the Pearson distribution system,
 Suggests: gsl
 License: GPL (>= 2)
 LazyLoad: yes
-Packaged: 2012-04-02 13:46:30 UTC; mabe003
+Encoding: latin1
+Packaged: 2012-09-25 13:21:39 UTC; mabe003
 Repository: CRAN
-Date/Publication: 2012-04-02 17:47:17
+Date/Publication: 2012-09-25 14:24:31

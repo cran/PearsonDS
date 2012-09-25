@@ -61,6 +61,7 @@ Martin Becker \email{martin.becker@mx.uni-saarland.de}
   \code{\link{PearsonDS-package}},
   \code{\link[PearsonDS]{Pearson}},
   \code{\link{pearsonFitM}},
+  \code{\link{pearsonMSC}},
   \code{\link{pearsonMoments}}
 }
 \examples{

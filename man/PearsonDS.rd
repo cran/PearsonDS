@@ -22,7 +22,8 @@ Pearson Distribution System
   more than 1000.
 }
 \author{
-Martin Becker
+Martin Becker \email{martin.becker@mx.uni-saarland.de} 
+and Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
 
 Maintainer: Martin Becker \email{martin.becker@mx.uni-saarland.de}
 }
@@ -58,6 +59,7 @@ Maintainer: Martin Becker \email{martin.becker@mx.uni-saarland.de}
   distributions, 
   \code{\link{pearsonFitM}} and \code{\link{pearsonFitML}} for fitting 
   Pearson distributions, 
+  \code{\link{pearsonMSC}} for model selection,
   \code{\link{pearsonMoments}} for calculation of (first four) moments.
 }
 \examples{

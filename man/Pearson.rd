@@ -71,7 +71,7 @@ Martin Becker \email{martin.becker@mx.uni-saarland.de}
   \code{\link{Pearson0}}, \code{\link{PearsonI}}, \code{\link{PearsonII}}, 
   \code{\link{PearsonIII}}, \code{\link{PearsonIV}}, \code{\link{PearsonV}}, 
   \code{\link{PearsonVI}}, \code{\link{PearsonVII}}, \code{\link{pearsonFitM}},
-  \code{\link{pearsonFitML}} 
+  \code{\link{pearsonFitML}}, \code{\link{pearsonMSC}} 
 }
 \examples{
 ## Define moments of distribution

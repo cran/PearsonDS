@@ -1,3 +1,8 @@
+  0.95 (11.01.2013)
+  
+  calls of (deprecated and soon-to-be-defunct) function 'is.real' replaced 
+  with calls of 'is.double' (reported by Prof Brian Ripley).
+
   0.94 (09.05.2012-25.09.2012)
 
   ensure that functions to be minimized by nlminb do not return NA or NaN

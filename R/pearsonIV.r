@@ -80,9 +80,9 @@ F21  <- function(aa,bb,cc,zz,tol=1e-8,minit,maxit,DEBUG=FALSE) {
     warning(paste("tol too small, using",tol,"instead"))
   }  
   suffix <- ""
-  if ((aa==1)&&is.real(bb)) suffix <- "a1bR" else
-    if ((aa==1)&&is.real(cc)) suffix <- "a1cR" else
-      if (is.real(aa)) suffix <- "aR"
+  if ((aa==1)&&is.double(bb)) suffix <- "a1bR" else
+    if ((aa==1)&&is.double(cc)) suffix <- "a1cR" else
+      if (is.double(aa)) suffix <- "aR"
   Dres <- .Call(paste("F21D",suffix,sep=""),aa,bb,cc,zz,minit,maxit,package="PearsonDS")
   res  <- Dres$value
   ind  <- (Dres$rel*tol)<.Machine$double.eps

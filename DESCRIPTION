@@ -1,8 +1,8 @@
 Package: PearsonDS
 Type: Package
 Title: Pearson Distribution System
-Version: 0.94
-Date: 2012-09-25
+Version: 0.95
+Date: 2013-01-11
 Author: Martin Becker and Stefan Klößner
 Maintainer: Martin Becker <martin.becker@mx.uni-saarland.de>
 Description: Implementation of the Pearson distribution system,
@@ -13,6 +13,6 @@ Suggests: gsl
 License: GPL (>= 2)
 LazyLoad: yes
 Encoding: latin1
-Packaged: 2012-09-25 13:21:39 UTC; mabe003
+Packaged: 2013-01-11 09:00:44 UTC; mabe003
 Repository: CRAN
-Date/Publication: 2012-09-25 14:24:31
+Date/Publication: 2013-01-11 11:02:55

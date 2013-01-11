@@ -1,4 +1,4 @@
-cd1decb222510c5f253e09f887cc25f5 *DESCRIPTION
+3af1ff4308a08bdc24d12753f9a54c88 *DESCRIPTION
 0cce1e42ef3fb133940946534fcf8896 *LICENSE
 671ef61956532af0e0677415f7ffaf8a *NAMESPACE
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
@@ -8,7 +8,7 @@ cd1decb222510c5f253e09f887cc25f5 *DESCRIPTION
 f3896e0308b1bf5081485b32f0fb2859 *R/pearsonI.R
 2f0cb33cd1c6c91eae3f7bf8bb0ac958 *R/pearsonII.r
 fcdd1280b41a9a601fc5d9d0d18ddd34 *R/pearsonIII.r
-e9aeb45564425a8d15a5af6122ff1d40 *R/pearsonIV.r
+e7d16e93fa6ec0ca3deeed0536771148 *R/pearsonIV.r
 8883aa7c3b045caafea252ee0f5d284c *R/pearsonV.r
 0aaa85f3143a71f228324ef627abd6e8 *R/pearsonVI.r
 4ff0c7f542f6aeca71266190059b320c *R/pearsonVII.r
@@ -21,7 +21,7 @@ a4db5bed6fc52e979258e99121127241 *R/zzz.r
 e6189dab2e494fec2199954345ad5d85 *configure.ac
 64b8b3be11da0fbb03938584979cd8b3 *configure.win
 649df21bce77f7bd12343b4bc83bfb62 *float_precision.m4
-cae253b381fa5e4915d2fd5e5a93cbdf *inst/CHANGES
+703ccd2b8c3011d94859e5e8cdbc298a *inst/CHANGES
 f76b39cf26666b46eefb1cf982baf509 *inst/CITATION
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd

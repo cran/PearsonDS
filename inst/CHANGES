@@ -1,3 +1,9 @@
+  0.96 (02.10.2013)
+  
+  dispensable file 'LICENSE' removed (due to check NOTE).
+  
+  dispensable use of ':::' removed (due to check NOTE).
+  
   0.95 (11.01.2013)
   
   calls of (deprecated and soon-to-be-defunct) function 'is.real' replaced 

@@ -6,7 +6,7 @@
 }
 \description{
   This function calculates the method of moments estimator for Pearson 
-  distribution, ie, it generates a Pearson distribution with moments exaktly
+  distribution, ie, it generates a Pearson distribution with moments exactly
   (up to rounding errors) matching the input moments 
   mean, variance, skewness and kurtosis.
 }

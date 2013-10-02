@@ -169,7 +169,8 @@ rpearsonIV(n, m, nu, location, scale, params)
   Distribution Function}, Aust. N. Z. J. Stat. 50 (2), pp. 199-205
 }
 \author{
-  Martin Becker \email{martin.becker@mx.uni-saarland.de}
+Martin Becker \email{martin.becker@mx.uni-saarland.de} and
+Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
 }
 \seealso{
   \code{\link{PearsonDS-package}},

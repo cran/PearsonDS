@@ -1,3 +1,8 @@
+  0.97 (20.11.2013)
+  
+  bug fix (and speedup) of random number generation for Pearson type IV 
+  distributions. (Many thanks to Dave DeMers for reporting!)
+  
   0.96 (02.10.2013)
   
   dispensable file 'LICENSE' removed (due to check NOTE).

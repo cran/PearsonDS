@@ -1,4 +1,4 @@
-2351ebbb983d29e0ee46ee186bf2a7c9 *DESCRIPTION
+bb130cb0f9ba0417cf3da0c6798569aa *DESCRIPTION
 671ef61956532af0e0677415f7ffaf8a *NAMESPACE
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
@@ -7,7 +7,7 @@
 f3896e0308b1bf5081485b32f0fb2859 *R/pearsonI.R
 2f0cb33cd1c6c91eae3f7bf8bb0ac958 *R/pearsonII.r
 fcdd1280b41a9a601fc5d9d0d18ddd34 *R/pearsonIII.r
-1e682121f2ed40c25c8ea7ec2cec212a *R/pearsonIV.r
+2f25b59bb9957cee718c733ca8e379b5 *R/pearsonIV.r
 8883aa7c3b045caafea252ee0f5d284c *R/pearsonV.r
 0aaa85f3143a71f228324ef627abd6e8 *R/pearsonVI.r
 4ff0c7f542f6aeca71266190059b320c *R/pearsonVII.r
@@ -19,7 +19,7 @@ a4db5bed6fc52e979258e99121127241 *R/zzz.r
 66453a54e7c5b0c9fbaf4c95ed2006cf *configure
 fd7893df56435d282d9f548350586e5f *configure.ac
 64b8b3be11da0fbb03938584979cd8b3 *configure.win
-b051f83ec3bba6d3f519e45c213d536a *inst/CHANGES
+527a68feaa785f7a89811a35d8aa85e8 *inst/CHANGES
 f76b39cf26666b46eefb1cf982baf509 *inst/CITATION
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
@@ -45,5 +45,5 @@ efa874fa82ec9729e3c9a144e2af28b9 *src/F21QD.c
 a3e16ba2ab4a45a25bc69a933576dd40 *src/QuadDouble.c
 0bda3d11793321211b1f611d0db2c300 *src/config.h.in
 3ff6407f5654747d81590884709c090f *src/pearson.h
-41274d6e5740c4328e6f1cfca21f0aac *src/pearsonIV.c
+017b356591fd248bda19477807449216 *src/pearsonIV.c
 e58092ce817399c5f65593c101150bb0 *src/xpfpa.h

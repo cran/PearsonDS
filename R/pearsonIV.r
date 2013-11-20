@@ -54,18 +54,18 @@ function(n,m,nu,location,scale,params) {
   if (m<1) stop("simulation for m<1 currently not available")
   if (logspace) {
     if (.hasGSL) {
-      k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
-            Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
+      k <- -0.5*log(pi)-#log(scale)-                                            # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
+            lgamma(m-0.5)+2*Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
     } else {
-      k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+      k <- .Call("logPearsonIVnorm",m,nu,1.0,package="PearsonDS")               # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
     }  
     .Call("rPearsonIVlogK",n,m,nu,scale,location,k,package="PearsonDS")
   } else {
     if (.hasGSL) {
-      k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
-            Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
+      k <- -0.5*log(pi)-#log(scale)-                                            # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
+            lgamma(m-0.5)+2*Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
     } else {
-      k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+      k <- .Call("logPearsonIVnorm",m,nu,1.0,package="PearsonDS")               # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
     }  
     .Call("rPearsonIVk",n,m,nu,scale,location,exp(k),package="PearsonDS")
   }  

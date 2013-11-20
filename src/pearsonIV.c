@@ -190,6 +190,45 @@ SEXP rPearsonIVlogK(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda, SEXP LogK) {  
   PROTECT(Res = allocVector(REALSXP, n));
   double *res;
   res = REAL(Res);
+  const double m      = REAL(M)[0];
+  const double nu     = REAL(Nu)[0];
+  const double a      = REAL(A)[0];
+  const double lam    = REAL(Lambda)[0];
+  const double logk   = REAL(LogK)[0];
+  const double b      = 2*m-2;
+  const double Mode   = atan(-nu/b);
+  const double cosM   = b/sqrt(b*b+nu*nu);
+  const double r      = b*log(cosM)-nu*Mode;
+  const double rc     = exp(-r-logk);
+  double x,z;
+  int s;
+  GetRNGstate();
+  for(int i=0; i<n; i++) {
+    do {
+      s = 0;
+      z = 0;
+      if( (x=4*unif_rand()) > 2 ) {
+        x -= 2;
+        s = 1;
+      } 
+      if (x > 1) x = 1 - (z=log(x-1)) ;
+      x = (s) ? Mode + rc*x : Mode - rc*x;
+    } while (fabs(x) >= M_PI_2 || z + log(unif_rand()) > b*log(cos(x)) - nu*x - r);
+    res[i] = a*tan(x) + lam;
+  }
+  PutRNGstate();
+  UNPROTECT(1);
+  return(Res);
+}
+
+/* Old Code; working, but slower */
+/*
+SEXP rPearsonIVlogK(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda, SEXP LogK) {  // rng using logspace, given logk
+  int n = INTEGER(AS_INTEGER(N))[0];
+  SEXP Res;
+  PROTECT(Res = allocVector(REALSXP, n));
+  double *res;
+  res = REAL(Res);
   double m      = REAL(M)[0];
   double nu     = REAL(Nu)[0];
   double a      = REAL(A)[0];
@@ -203,3 +242,4 @@ SEXP rPearsonIVlogK(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda, SEXP LogK) {  
   UNPROTECT(1);
   return(Res);
 }
+*/

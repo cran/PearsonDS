@@ -1,7 +1,11 @@
 useDynLib(PearsonDS)
 #importFrom(gsl,lngamma_complex)
 importFrom(utils,installed.packages)
-
+importFrom("graphics", "curve", "lines", "plot", "points", "polygon")
+importFrom("stats", "dbeta", "df", "dgamma", "dnorm", "dt",
+  "integrate", "nlminb", "pbeta", "pf", "pgamma", "pnorm",
+  "pt", "qbeta", "qf", "qgamma", "qnorm", "qt", "rbeta", "rf",
+  "rgamma", "rnorm", "rt", "sd", "var")
 exportPattern("^dpearson[[:alpha:]]+")
 exportPattern("^ppearson[[:alpha:]]+")
 exportPattern("^qpearson[[:alpha:]]+")

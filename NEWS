@@ -1,0 +1,99 @@
+Changes in version 0.98 (2016-06-06)
+
+Bug fixes:
+
+- implementation and documentation of type V has been corrected. It was 
+  mentioned in the documentation that the scale parameter corresponds
+  to the reciprocal value of the usual scale parameter (aka rate) of
+  the inverse gamma distribution, but this was neither implemented correctly 
+  nor was the probability density function (from the help page) 
+  right. 
+  The scale parameter now corresponds to the usual scale parameter
+  of the inverse gamma distribution, the implementation and the documentation
+  have been corrected and adapted. 
+  (Many thanks to Andrew Beck for reporting!)
+  
+Small changes:
+
+- replaced CHANGES with NEWS (and using corresponding markup). 
+
+- added many importFrom directives to NAMESPACE and replaced calls to 
+  require with calls to requireNamespace (as suggested by package 
+  CHECK).
+
+- removed CITATION file (which would be equal to default citation info).
+
+Changes in version 0.97 (2013-11-20)
+
+Bug fixes:
+  
+- bug fix (and speedup) of random number generation for Pearson type IV 
+  distributions. (Many thanks to Dave DeMers for reporting!).
+  
+Changes in version 0.96 (2013-10-02)
+  
+Small changes:
+
+- dispensable file 'LICENSE' removed (due to check NOTE).
+  
+- dispensable use of ':::' removed (due to check NOTE).
+  
+Changes in version 0.95 (2013-01-11)
+  
+Small changes:
+
+- calls of (deprecated and soon-to-be-defunct) function 'is.real' replaced 
+  with calls of 'is.double' (reported by Prof Brian Ripley).
+
+Changes in version 0.94 (2012-09-25)
+
+Bug fixes:
+
+- ensure that functions to be minimized by nlminb do not return NA or NaN
+  any more (by replacing NA/NaN results with +Inf) because nlminb does
+  not work reliably with NA/NaN function values.
+  (Many thanks to Prof Brian Ripley for pointing this out)
+  
+- bug fix of pearsonDiagram (for max.skewness>=32 [squared.skewness=TRUE]
+  and max.skewnewss>=sqrt(32) [squared.skewness=FALSE])
+  
+New features:
+
+- new function pearsonMSC for model selection purposes.
+  (suggestion/wish from Dr. Ross Larsen Ph.D) 
+
+Changes in version 0.93 (2012-04-02)
+  
+Small changes:
+
+- caching of package gsl's availability status removed, because using
+  'installed.packages' or 'require' in .onAttach should be avoided 
+  (as NOTEd in check results since [about] R-2.15.0). Slow down should be 
+  negligible.
+  
+- correction of link to Heinrich's working paper
+  
+Changes in version 0.92 (2010-04-23)
+  
+Bug fixes:
+
+- NAs and NaNs were not handled properly in ppearsonIV and qpearsonIV
+
+- (documentation) bug fix:
+  typo in the density function for Pearson type VI (only pdf-manual)
+  many thanks to Young Hwa Sung for reporting the typo!
+
+Changes in version 0.91 (2009-09-29)
+  
+Bug fixes: 
+
+- autoconf/configure mechanism was messed up -> no MacOS X binary on CRAN
+  Many thanks to Simon Urbanek <simon.urbanek@r-project.org> for his valuable
+  help (and autoconf lesson)!
+
+Changes in version 0.90 (2009-09-16) 
+
+New features
+  
+-  initial release
+  

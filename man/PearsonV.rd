@@ -68,8 +68,8 @@ rpearsonV(n, shape, location, scale, params)
   The probability density function with parameters \code{shape}\eqn{=a},  
   \code{scale}\eqn{=s} and \code{location}\eqn{=\lambda}{=lambda} 
   is given by
-  \deqn{f(x)= \frac{1}{|s|^a \Gamma(a)} |x-\lambda|^{-a-1} 
-              e^{-\frac{s}{x-\lambda}}}{f(x)= 1/(|s|^a Gamma(a)) 
+  \deqn{f(x)= \frac{|s|^a }{\Gamma(a)} |x-\lambda|^{-a-1} 
+              e^{-\frac{s}{x-\lambda}}}{f(x)= |s|^a/Gamma(a)
               |x-lambda|^(-a-1) e^-(s/(x-lambda))}
   for \eqn{s\ne 0}{s<>0}, \eqn{a>0} and 
   \eqn{\frac{s}{x-\lambda}> 0}{s/(x-lambda)>0}.
@@ -86,8 +86,9 @@ rpearsonV(n, shape, location, scale, params)
   Martin Becker \email{martin.becker@mx.uni-saarland.de}
 }
 \note{
-  The parameter \code{scale} corresponds to the reciprocal value of the
-  usual scale parameter of the Inverse Gamma distribution.
+  Since package version 0.98, the parameter \code{scale} corresponds to the 
+  usual scale parameter of the Inverse Gamma distribution (not the reciprocal 
+  value, which was implemented [incorrectly!] until package version 0.97). 
 }
 \seealso{
   \code{\link{GammaDist}},
@@ -96,7 +97,7 @@ rpearsonV(n, shape, location, scale, params)
 }
 \examples{
 ## define Pearson type V parameter set with shape=3, location=1, scale=-2
-pVpars <- list(shape=3, location=1, scale=-0.5)
+pVpars <- list(shape=3, location=1, scale=-2)
 ## calculate probability density function
 dpearsonV(-4:1,params=pVpars)
 ## calculate cumulative distribution function

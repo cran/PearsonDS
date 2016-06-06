@@ -1,5 +1,6 @@
-bb130cb0f9ba0417cf3da0c6798569aa *DESCRIPTION
-671ef61956532af0e0677415f7ffaf8a *NAMESPACE
+73e352869c424e95741ff9b031ebd39a *DESCRIPTION
+5d734b9a14f503365108fd776c12ca94 *NAMESPACE
+744b9de2ef9410fe5669ca0bef9e0d1d *NEWS
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
@@ -7,8 +8,8 @@ bb130cb0f9ba0417cf3da0c6798569aa *DESCRIPTION
 f3896e0308b1bf5081485b32f0fb2859 *R/pearsonI.R
 2f0cb33cd1c6c91eae3f7bf8bb0ac958 *R/pearsonII.r
 fcdd1280b41a9a601fc5d9d0d18ddd34 *R/pearsonIII.r
-2f25b59bb9957cee718c733ca8e379b5 *R/pearsonIV.r
-8883aa7c3b045caafea252ee0f5d284c *R/pearsonV.r
+50ff602337cdeaee6bb89fcd5ce9b3a4 *R/pearsonIV.r
+f2f128599d267a46bbc511dd89641d5c *R/pearsonV.r
 0aaa85f3143a71f228324ef627abd6e8 *R/pearsonVI.r
 4ff0c7f542f6aeca71266190059b320c *R/pearsonVII.r
 7369568f119bfe94cf80e08af34fbfde *R/plots.r
@@ -19,8 +20,6 @@ a4db5bed6fc52e979258e99121127241 *R/zzz.r
 66453a54e7c5b0c9fbaf4c95ed2006cf *configure
 fd7893df56435d282d9f548350586e5f *configure.ac
 64b8b3be11da0fbb03938584979cd8b3 *configure.win
-527a68feaa785f7a89811a35d8aa85e8 *inst/CHANGES
-f76b39cf26666b46eefb1cf982baf509 *inst/CITATION
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
 745d19fb54ecc2601f212976bf0206ab *man/PearsonDS.rd
@@ -28,7 +27,7 @@ e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
 157ec739074e2def35591a5aeb77133c *man/PearsonII.rd
 297d21175ac93c6364490228899fed32 *man/PearsonIII.rd
 14bd4000fc6fcfe6c7b16c31a07a0ada *man/PearsonIV.rd
-696d61bebab472bf7f089faf951ccef3 *man/PearsonV.rd
+ee7b151e9e7e5287a3ae1e19df8647c6 *man/PearsonV.rd
 d1b9cd9436bbb024a0a3d3c662be3a0a *man/PearsonVI.rd
 db118f4a00c0a012d64a94572187623d *man/PearsonVII.rd
 c08a4e4f690cb2762a1910adcda52108 *man/empMoments.Rd

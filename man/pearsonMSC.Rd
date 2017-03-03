@@ -80,7 +80,7 @@ Martin Becker \email{martin.becker@mx.uni-saarland.de}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
 ## Generate sample 
-DATA <- rpearson(1000,moments=c(mean=1,variance=2,skewness=1,kurtosis=5))
+DATA <- rpearson(500,moments=c(mean=1,variance=2,skewness=1,kurtosis=5))
 ## Call pearsonMSC for model selection
 MSC  <- pearsonMSC(DATA,control=list(iter.max=1e5,eval.max=1e5))
 ## log-Likelihood values for all distribution sub-classes

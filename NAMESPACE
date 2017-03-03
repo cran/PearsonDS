@@ -1,6 +1,6 @@
-useDynLib(PearsonDS)
+useDynLib(PearsonDS, .registration = TRUE, .fixes = "C_")
 #importFrom(gsl,lngamma_complex)
-importFrom(utils,installed.packages)
+importFrom("utils", "installed.packages", "getFromNamespace")
 importFrom("graphics", "curve", "lines", "plot", "points", "polygon")
 importFrom("stats", "dbeta", "df", "dgamma", "dnorm", "dt",
   "integrate", "nlminb", "pbeta", "pf", "pgamma", "pnorm",

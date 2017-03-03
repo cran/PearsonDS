@@ -15,7 +15,7 @@ function(x,m,nu,location,scale,params,log=FALSE) {
         k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
               Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
       } else {
-        k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+        k <- .Call(C_logPearsonIVnorm,m,nu,scale)
       }  
       if (log) {
         k-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
@@ -27,7 +27,7 @@ function(x,m,nu,location,scale,params,log=FALSE) {
         k <- exp(-0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*                         # improve?
               Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m))
       } else {
-        k <- .Call("PearsonIVnorm",m,nu,scale,package="PearsonDS")
+        k <- .Call(C_PearsonIVnorm,m,nu,scale)
       }  
       if (log) {
         log(k)-m*log(1+((x-location)/scale)^2)-nu*atan((x-location)/scale)
@@ -57,17 +57,17 @@ function(n,m,nu,location,scale,params) {
       k <- -0.5*log(pi)-#log(scale)-                                            # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
             lgamma(m-0.5)+2*Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
     } else {
-      k <- .Call("logPearsonIVnorm",m,nu,1.0,package="PearsonDS")               # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
+      k <- .Call(C_logPearsonIVnorm,m,nu,1.0)                                   # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
     }  
-    .Call("rPearsonIVlogK",n,m,nu,scale,location,k,package="PearsonDS")
+    .Call(C_rPearsonIVlogK,n,m,nu,scale,location,k)
   } else {
     if (.hasGSL) {
       k <- -0.5*log(pi)-#log(scale)-                                            # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
             lgamma(m-0.5)+2*Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
     } else {
-      k <- .Call("logPearsonIVnorm",m,nu,1.0,package="PearsonDS")               # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
+      k <- .Call(C_logPearsonIVnorm,m,nu,1.0)                                   # bug, reported by Dave DeMers on 2013-11-19, corrected in v. 0.97, 2013-11-20
     }  
-    .Call("rPearsonIVk",n,m,nu,scale,location,exp(k),package="PearsonDS")
+    .Call(C_rPearsonIVk,n,m,nu,scale,location,exp(k))
   }  
 }
 
@@ -79,14 +79,15 @@ F21  <- function(aa,bb,cc,zz,tol=1e-8,minit,maxit,DEBUG=FALSE) {
     tol <- .Machine$double.eps
     warning(paste("tol too small, using",tol,"instead"))
   }  
-  suffix <- ""
-  if ((aa==1)&&is.double(bb)) suffix <- "a1bR" else
-    if ((aa==1)&&is.double(cc)) suffix <- "a1cR" else
-      if (is.double(aa)) suffix <- "aR"
-  Dfun <- paste0("F21D",suffix)
-  DDfun <- paste0("F21DD",suffix)
-  QDfun <- paste0("F21QD",suffix)
-  Dres <- .Call(Dfun,aa,bb,cc,zz,minit,maxit,package="PearsonDS")
+  variant <- "1"
+  if ((aa==1)&&is.double(bb)) variant <- "2" else
+    if ((aa==1)&&is.double(cc)) variant <- "3" else
+      if (is.double(aa)) variant <- "4"
+  Dres <- switch(variant,
+    "1" = .Call(C_F21D,aa,bb,cc,zz,minit,maxit),
+    "2" = .Call(C_F21Da1bR,aa,bb,cc,zz,minit,maxit),
+    "3" = .Call(C_F21Da1cR,aa,bb,cc,zz,minit,maxit),
+    "4" = .Call(C_F21DaR,aa,bb,cc,zz,minit,maxit))
   res  <- Dres$value
   ind  <- (Dres$rel*tol)<.Machine$double.eps
   ind[is.na(ind)] <- TRUE
@@ -94,14 +95,22 @@ F21  <- function(aa,bb,cc,zz,tol=1e-8,minit,maxit,DEBUG=FALSE) {
   rtolDD <- 0; rtolQD <- 0
   if (sum(!ind)>0) rtolD <- .Machine$double.eps/min(Dres$rel[!ind]) else rtolD <- 0
   if (sum(ind)>0) {
-    DDres <- .Call(DDfun,aa,bb,cc,zz[ind],minit,maxit,package="PearsonDS")
+    DDres <- switch(variant,
+      "1" = .Call(C_F21DD,aa,bb,cc,zz[ind],minit,maxit),
+      "2" = .Call(C_F21DDa1bR,aa,bb,cc,zz[ind],minit,maxit),
+      "3" = .Call(C_F21DDa1cR,aa,bb,cc,zz[ind],minit,maxit),
+      "4" = .Call(C_F21DDaR,aa,bb,cc,zz[ind],minit,maxit))
     res[ind] <- DDres$value
     ind2 <- (DDres$rel*tol)<2.465190e-32
     ind2[is.na(ind2)] <- TRUE
     if (DEBUG) cat(sum(ind2)," summands inexact (double-double)\n")
     if (sum(!ind2)>0) rtolDD <- 2.465190e-32/min(DDres$rel[!ind2]) else rtolDD <- 0
     if (sum(ind2)>0) {
-      QDres   <- .Call(QDfun,aa,bb,cc,zz[ind[ind2]],minit,maxit,package="PearsonDS")
+      QDres <- switch(variant,
+        "1" = .Call(C_F21QD,aa,bb,cc,zz[ind[ind2]],minit,maxit),
+        "2" = .Call(C_F21QDa1bR,aa,bb,cc,zz[ind[ind2]],minit,maxit),
+        "3" = .Call(C_F21QDa1cR,aa,bb,cc,zz[ind[ind2]],minit,maxit),
+        "4" = .Call(C_F21QDaR,aa,bb,cc,zz[ind[ind2]],minit,maxit))
       rtolQD  <- 3.038582e-64/min(QDres$rel)
       res[ind[ind2]] <- QDres$value
     }  
@@ -179,7 +188,7 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
     k <- -0.5*log(pi)-log(scale)-lgamma(m-0.5)+2*
           Re(gsl::lngamma_complex(m+nu/2*1i))-lgamma(m)
   } else {
-    k <- .Call("logPearsonIVnorm",m,nu,scale,package="PearsonDS")
+    k <- .Call(C_logPearsonIVnorm,m,nu,scale)
   }
   intfn <- function(x) exp(k-m*log(1+((x-location)/scale)^2)-nu*
                        atan((x-location)/scale))

@@ -1,6 +1,6 @@
-73e352869c424e95741ff9b031ebd39a *DESCRIPTION
-5d734b9a14f503365108fd776c12ca94 *NAMESPACE
-744b9de2ef9410fe5669ca0bef9e0d1d *NEWS
+534f82ed374f2f3f96db4134c88db147 *DESCRIPTION
+b002c479a1f685bfaceb9f34cca3210a *NAMESPACE
+205ae2f50e1d79a92b130ab5a34a2c68 *NEWS
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
@@ -8,12 +8,12 @@
 f3896e0308b1bf5081485b32f0fb2859 *R/pearsonI.R
 2f0cb33cd1c6c91eae3f7bf8bb0ac958 *R/pearsonII.r
 fcdd1280b41a9a601fc5d9d0d18ddd34 *R/pearsonIII.r
-50ff602337cdeaee6bb89fcd5ce9b3a4 *R/pearsonIV.r
+28f1beeef9e5c065a908faa57e52e755 *R/pearsonIV.r
 f2f128599d267a46bbc511dd89641d5c *R/pearsonV.r
 0aaa85f3143a71f228324ef627abd6e8 *R/pearsonVI.r
 4ff0c7f542f6aeca71266190059b320c *R/pearsonVII.r
 7369568f119bfe94cf80e08af34fbfde *R/plots.r
-a4db5bed6fc52e979258e99121127241 *R/zzz.r
+a939661fcde73b3456057e528cba72ad *R/zzz.r
 411f1c64d4a679e27d13594353efd70e *TODO
 131a236039d88977475269c6ee6c6e2c *cleanup
 131a236039d88977475269c6ee6c6e2c *cleanup.win
@@ -34,7 +34,7 @@ c08a4e4f690cb2762a1910adcda52108 *man/empMoments.Rd
 0e6f8a813f5e6f48012155776ab74464 *man/pearsonDiagram.Rd
 6c5f8421e456283c3e7c94565802a9a6 *man/pearsonFitM.Rd
 3a142368a7169ca4eb192036c48f141f *man/pearsonFitML.Rd
-b010d6ffbe17243ace26177bd90f9ef4 *man/pearsonMSC.Rd
+af8e89459cb4e53858b0b46db4638b8f *man/pearsonMSC.Rd
 07cec4aa8f1774793ec05b6d9b042f4a *man/pearsonMoments.Rd
 6b1f9648036a8a6a1652adb49a062acd *src/Complex.c
 461a1822796ab5af03ca12d2d6bfbd62 *src/DoubleDouble.c
@@ -43,6 +43,7 @@ b010d6ffbe17243ace26177bd90f9ef4 *man/pearsonMSC.Rd
 efa874fa82ec9729e3c9a144e2af28b9 *src/F21QD.c
 a3e16ba2ab4a45a25bc69a933576dd40 *src/QuadDouble.c
 0bda3d11793321211b1f611d0db2c300 *src/config.h.in
-3ff6407f5654747d81590884709c090f *src/pearson.h
+2d4ba98022e8ae19d691c55db51976fd *src/pearson.c
+97674869bed57746e7fa771d80aae22a *src/pearson.h
 017b356591fd248bda19477807449216 *src/pearsonIV.c
 e58092ce817399c5f65593c101150bb0 *src/xpfpa.h

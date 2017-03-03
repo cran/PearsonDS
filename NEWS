@@ -1,3 +1,13 @@
+Changes in version 1.0 (2017-03-03)
+
+Small changes:
+
+- added registration of native routines (in reaction to recent CRAN check
+  notes), thereby fixing wrong (lower case) PACKAGE argument (reported 
+  by Kurt Hornik).
+
+- changed sample size in example of pearsonMSC in order to reduce run-time.
+
 Changes in version 0.98 (2016-06-06)
 
 Bug fixes:

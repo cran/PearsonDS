@@ -121,3 +121,29 @@ Rcomplex CAddR(Rcomplex A, double B);
 Rcomplex CAdd1(Rcomplex A);
 double Cabs2(Rcomplex A);
 double CnormInf(Rcomplex A);
+
+// F21.c
+SEXP F21D(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21Da1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21Da1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21DaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+
+// F21DD.c
+SEXP F21DD(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21DDa1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21DDa1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21DDaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+
+// F21QD.c
+SEXP F21QD(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21QDa1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21QDa1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+SEXP F21QDaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit);
+
+// pearsonIV.c
+SEXP PearsonIVnorm(SEXP M, SEXP Nu, SEXP A);
+SEXP logPearsonIVnorm(SEXP M, SEXP Nu, SEXP A);
+SEXP rPearsonIV(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda);
+SEXP rPearsonIVk(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda, SEXP K);
+SEXP rPearsonIVlog(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda);
+SEXP rPearsonIVlogK(SEXP N, SEXP M, SEXP Nu, SEXP A, SEXP Lambda, SEXP LogK);

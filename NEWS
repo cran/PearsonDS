@@ -1,3 +1,10 @@
+Changes in version 1.1 (2017-07-17)
+
+Small changes:
+
+- changed (inappropriate) CR/LF line ending of configure.ac to LF line ending
+  (reported by Prof Brian Ripley).
+
 Changes in version 1.0 (2017-03-03)
 
 Small changes:

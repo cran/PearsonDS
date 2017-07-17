@@ -1,6 +1,6 @@
-534f82ed374f2f3f96db4134c88db147 *DESCRIPTION
+3dce990d0633b68148f3ce9168355ecf *DESCRIPTION
 b002c479a1f685bfaceb9f34cca3210a *NAMESPACE
-205ae2f50e1d79a92b130ab5a34a2c68 *NEWS
+96caa6c8d3adcb535559f08b2dea9b9b *NEWS
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
@@ -18,7 +18,7 @@ a939661fcde73b3456057e528cba72ad *R/zzz.r
 131a236039d88977475269c6ee6c6e2c *cleanup
 131a236039d88977475269c6ee6c6e2c *cleanup.win
 66453a54e7c5b0c9fbaf4c95ed2006cf *configure
-fd7893df56435d282d9f548350586e5f *configure.ac
+d7cb19e10dcc837e30bcfc2ebb3920dd *configure.ac
 64b8b3be11da0fbb03938584979cd8b3 *configure.win
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd

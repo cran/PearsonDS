@@ -1,6 +1,6 @@
-3dce990d0633b68148f3ce9168355ecf *DESCRIPTION
+56e7e77219fab0ce68eafa0c2be3d87a *DESCRIPTION
 b002c479a1f685bfaceb9f34cca3210a *NAMESPACE
-96caa6c8d3adcb535559f08b2dea9b9b *NEWS
+c57ccaf8fb09159ef266ee936a66a722 *NEWS
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
@@ -23,13 +23,13 @@ d7cb19e10dcc837e30bcfc2ebb3920dd *configure.ac
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
 745d19fb54ecc2601f212976bf0206ab *man/PearsonDS.rd
-35514a31f47cb37666c3e4429bd760af *man/PearsonI.Rd
-157ec739074e2def35591a5aeb77133c *man/PearsonII.rd
+2eb911ee11d8f5c1de08c1e99e420d37 *man/PearsonI.Rd
+f817387e2d703190857f351a7a8064d8 *man/PearsonII.rd
 297d21175ac93c6364490228899fed32 *man/PearsonIII.rd
-14bd4000fc6fcfe6c7b16c31a07a0ada *man/PearsonIV.rd
+b100143790fb5c04803c3b9dd90b2586 *man/PearsonIV.rd
 ee7b151e9e7e5287a3ae1e19df8647c6 *man/PearsonV.rd
 d1b9cd9436bbb024a0a3d3c662be3a0a *man/PearsonVI.rd
-db118f4a00c0a012d64a94572187623d *man/PearsonVII.rd
+733307a1974824c76f82496b0c194d76 *man/PearsonVII.rd
 c08a4e4f690cb2762a1910adcda52108 *man/empMoments.Rd
 0e6f8a813f5e6f48012155776ab74464 *man/pearsonDiagram.Rd
 6c5f8421e456283c3e7c94565802a9a6 *man/pearsonFitM.Rd

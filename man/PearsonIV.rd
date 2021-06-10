@@ -74,10 +74,10 @@ rpearsonIV(n, m, nu, location, scale, params)
   scale parameter \code{scale}\eqn{=a}, and shape parameters 
   \eqn{m} and \eqn{\nu}{nu} can
   be obtained by its probability density function
-  \deqn{p(x) = \frac{\left|\frac{\Gamma(m+\frac{\nu}{2}i)}{\Gamma(m)}\right|^2}
+  \deqn{f(x) = \frac{\left|\frac{\Gamma(m+\frac{\nu}{2}i)}{\Gamma(m)}\right|^2}
         {a B(m-\frac{1}{2},\frac{1}{2})}
         \left[1+\left(\frac{x-\lambda}{a}\right)^2\right]^{-m} 
-        e^{-\nu \mathrm{arctan}\left(\frac{x-\lambda}{a} \right)}}{p(x) =
+        e^{-\nu \mathrm{arctan}\left(\frac{x-\lambda}{a} \right)}}{f(x) =
         |Gamma(m+nu/2*i)/Gamma(m)|^2/(a*B(m-1/2,1/2))*[1+((x-lambda)/a)^2]^(-m) 
         * exp[-nu*arctan((x-lambda)/a)]}
   for \eqn{a>0}, \eqn{m>\frac{1}{2}}{m>1/2}, \eqn{\nu\ne 0}{nu<>0} 
@@ -169,8 +169,9 @@ rpearsonIV(n, m, nu, location, scale, params)
   Distribution Function}, Aust. N. Z. J. Stat. 50 (2), pp. 199-205
 }
 \author{
-Martin Becker \email{martin.becker@mx.uni-saarland.de} and
-Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
+Martin Becker \email{martin.becker@mx.uni-saarland.de},
+Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de} and
+Joel Heinrich
 }
 \seealso{
   \code{\link{PearsonDS-package}},

@@ -68,8 +68,8 @@ rpearsonI(n, a, b, location, scale, params)
   The probability density function with parameters \code{a}, \code{b},  
   \code{scale}\eqn{=s} and \code{location}\eqn{=\lambda}{=lambda} 
   is given by
-  \deqn{f(x)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left(\frac{x-\lambda}{s}
-  \right)^{a-1}\left(1-\frac{x-\lambda}{s}\right)^{b-1}}{f(x)=Gamma(a+b)/
+  \deqn{f(x)=\frac{1}{|s|}\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\left(\frac{x-\lambda}{s}
+  \right)^{a-1}\left(1-\frac{x-\lambda}{s}\right)^{b-1}}{f(x)=1/|s|*Gamma(a+b)/
   (Gamma(a)Gamma(b))
   ((x-lambda)/s)^(a-1)(1-((x-lambda)/s))^(b-1)}
   for \eqn{a>0}, \eqn{b>0}, \eqn{s\ne 0}{s<>0}, 

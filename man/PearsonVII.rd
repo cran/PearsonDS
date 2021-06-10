@@ -63,9 +63,9 @@ rpearsonVII(n, df, location, scale, params)
   of the well-known Student's t distribution; the probability density function
   with parameters \code{df}\eqn{=n}, \code{location}\eqn{=\lambda}{=lambda} and
   \code{scale}\eqn{=s} is given by
-  \deqn{f(x) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n \pi} \Gamma(\frac{n}{2})} 
+  \deqn{f(x) = \frac{1}{|s|}\frac{\Gamma(\frac{n+1}{2})}{\sqrt{n \pi} \Gamma(\frac{n}{2})} 
                \left(1 + \frac{(\frac{x-\lambda}{s})^2}{n}\right)^{-\frac{n+1}{2}}}{f(x) 
-               = Gamma((n+1)/2) / (sqrt(n pi) Gamma(n/2)) 
+               = 1/|s|*Gamma((n+1)/2) / (sqrt(n pi) Gamma(n/2)) 
                (1 + ((x-lambda)/s)^2/n)^-((n+1)/2)}
   for \eqn{s\ne 0}{s<>0}.
   The above functions are thus only wrappers for \code{dt}, 

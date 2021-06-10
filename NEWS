@@ -1,3 +1,19 @@
+Changes in version 1.2 (2021-06-10)
+
+Bug fixes:
+
+- documentation of type I/II/VII has been corrected (the missing constant 
+  1/|s| has been added to the probability density functions in the 
+  documentation; the implementations were not affected).
+  (Many thanks to Prof. David Fox for reporting!)
+
+Small changes:
+
+- changed the name of the probability density function in the documentation 
+  of type IV to f(x) (from p(x)) in order to improve consistency.
+  
+- update of author information.
+
 Changes in version 1.1 (2017-07-17)
 
 Small changes:

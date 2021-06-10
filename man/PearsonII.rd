@@ -65,8 +65,8 @@ rpearsonII(n, a, location, scale, params)
   The probability density function with parameters \code{a},  
   \code{scale}\eqn{=s} and \code{location}\eqn{=\lambda}{=lambda} 
   is given by
-  \deqn{f(x)=\frac{\Gamma(2a)}{\Gamma(a)^2}\left(\frac{x-\lambda}{s}\cdot
-        \left(1-\frac{x-\lambda}{s}\right)\right)^{a-1}}{f(x)=Gamma(2a)/
+  \deqn{f(x)=\frac{1}{|s|}\frac{\Gamma(2a)}{\Gamma(a)^2}\left(\frac{x-\lambda}{s}\cdot
+        \left(1-\frac{x-\lambda}{s}\right)\right)^{a-1}}{f(x)=1/|s|*Gamma(2a)/
         (Gamma(a)^2)
         (((x-lambda)/s)*(1-((x-lambda)/s)))^(a-1)}
   for \eqn{a>0}, \eqn{s\ne 0}{s<>0}, 

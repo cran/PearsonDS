@@ -1,7 +1,7 @@
-AC_PREREQ(2.59)
-AC_INIT(PearsonDS, 0.91, m@rtinbecker.de)
+AC_PREREQ([2.69])
+AC_INIT([PearsonDS],[0.91],[m@rtinbecker.de])
 AC_CONFIG_SRCDIR([src/QuadDouble.c]) ## representative source file
-AC_CONFIG_HEADER([src/config.h])     ## Autoheader is used
+AC_CONFIG_HEADERS([src/config.h])     ## Autoheader is used
 
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
@@ -41,7 +41,7 @@ dnl  for the platform since CMake does not provide a viable variable.
 
 AC_DEFUN([CHECK_FLOAT_PRECISION],[
   AC_MSG_CHECKING([for usable _FPU_SETCW])
-  AC_TRY_RUN([
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
    #include <stdio.h>
    #include <string.h>
    #include <fpu_control.h>
@@ -65,7 +65,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
      // see if the result is actually in double precision
      return strncmp(buf, "0.00287699", 10) == 0 ? 0 : 1;
    }
-  ], [ac_cfp_have__fpu_setcw=yes], [ac_cfp_have__fpu_setcw=no], [ac_cfp_have__fpu_setcw=no])
+  ]])],[ac_cfp_have__fpu_setcw=yes],[ac_cfp_have__fpu_setcw=no],[ac_cfp_have__fpu_setcw=no])
   if test "$ac_cfp_have__fpu_setcw" = "yes" ; then
     AC_DEFINE(HAVE__FPU_SETCW, 1, [whether _FPU_SETCW is present and usable])
     AC_MSG_RESULT(yes)
@@ -74,7 +74,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
   fi
   
   AC_MSG_CHECKING([for usable fpsetprec])
-  AC_TRY_RUN([
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
    #include <stdio.h>
    #include <string.h>
    #include <machine/ieeefp.h>
@@ -97,7 +97,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
      // see if the result is actually in double precision
      return strncmp(buf, "0.00287699", 10) == 0 ? 0 : 1;
    }
-  ], [ac_cfp_have_fpsetprec=yes], [ac_cfp_have_fpsetprec=no], [ac_cfp_have_fpsetprec=no])
+  ]])],[ac_cfp_have_fpsetprec=yes],[ac_cfp_have_fpsetprec=no],[ac_cfp_have_fpsetprec=no])
   if test "$ac_cfp_have_fpsetprec" = "yes" ; then
     AC_DEFINE(HAVE_FPSETPREC, 1, [whether fpsetprec is present and usable])
     AC_MSG_RESULT(yes)
@@ -106,7 +106,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
   fi
 
   AC_MSG_CHECKING([for usable _controlfp])
-  AC_TRY_RUN([
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
    #include <stdio.h>
    #include <string.h>
    #include <float.h>
@@ -129,7 +129,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
      // see if the result is actually in double precision
      return strncmp(buf, "0.00287699", 10) == 0 ? 0 : 1;
    }
-  ], [ac_cfp_have__controlfp=yes], [ac_cfp_have__controlfp=no], [ac_cfp_have__controlfp=no])
+  ]])],[ac_cfp_have__controlfp=yes],[ac_cfp_have__controlfp=no],[ac_cfp_have__controlfp=no])
   if test "$ac_cfp_have__controlfp" = "yes" ; then
     AC_DEFINE(HAVE__CONTROLFP, 1, [whether _controlfp is present usable])
     AC_MSG_RESULT(yes)
@@ -138,7 +138,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
   fi
 
   AC_MSG_CHECKING([for usable _controlfp_s])
-  AC_TRY_RUN([
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
    #include <stdio.h>
    #include <string.h>
    #include <float.h>
@@ -162,7 +162,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
      // see if the result is actually in double precision
      return strncmp(buf, "0.00287699", 10) == 0 ? 0 : 1;
    }
-  ], [ac_cfp_have__controlfp_s=yes], [ac_cfp_have__controlfp_s=no], [ac_cfp_have__controlfp_s=no])
+  ]])],[ac_cfp_have__controlfp_s=yes],[ac_cfp_have__controlfp_s=no],[ac_cfp_have__controlfp_s=no])
   if test "$ac_cfp_have__controlfp_s" = "yes" ; then
     AC_DEFINE(HAVE__CONTROLFP_S, 1, [whether _controlfp_s is present and usable])
     AC_MSG_RESULT(yes)
@@ -171,7 +171,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
   fi
 
   AC_MSG_CHECKING([whether FPU control word can be manipulated by inline assembler])
-  AC_TRY_RUN([
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
    #include <stdio.h>
    #include <string.h>
    
@@ -197,7 +197,7 @@ AC_DEFUN([CHECK_FLOAT_PRECISION],[
      // see if the result is actually in double precision
      return strncmp(buf, "0.00287699", 10) == 0 ? 0 : 1;
    }
-  ], [ac_cfp_have_fpu_inline_asm_x86=yes], [ac_cfp_have_fpu_inline_asm_x86=no], [ac_cfp_have_fpu_inline_asm_x86=no])
+  ]])],[ac_cfp_have_fpu_inline_asm_x86=yes],[ac_cfp_have_fpu_inline_asm_x86=no],[ac_cfp_have_fpu_inline_asm_x86=no])
   if test "$ac_cfp_have_fpu_inline_asm_x86" = "yes" ; then
     AC_DEFINE(HAVE_FPU_INLINE_ASM_X86, 1, [whether FPU control word can be manipulated by inline assembler])
     AC_MSG_RESULT(yes)

@@ -1,8 +1,8 @@
 Package: PearsonDS
 Type: Package
 Title: Pearson Distribution System
-Version: 1.2
-Date: 2021-06-10
+Version: 1.2.1
+Date: 2021-10-06
 Authors@R: c(person("Martin","Becker", role = c("aut","cre"),
     email = "martin.becker@mx.uni-saarland.de",
     comment=c(ORCID="0000-0003-2336-9751")),
@@ -19,9 +19,9 @@ License: GPL (>= 2)
 LazyLoad: yes
 Encoding: latin1
 NeedsCompilation: yes
-Packaged: 2021-06-10 08:40:18 UTC; mabe003
+Packaged: 2021-10-06 10:51:41 UTC; mabe003
 Author: Martin Becker [aut, cre] (<https://orcid.org/0000-0003-2336-9751>),
   Stefan Klößner [aut] (<https://orcid.org/0000-0002-6558-7370>),
   Joel Heinrich [ctb]
 Repository: CRAN
-Date/Publication: 2021-06-10 09:30:02 UTC
+Date/Publication: 2021-10-06 12:10:02 UTC

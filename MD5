@@ -1,6 +1,6 @@
-56e7e77219fab0ce68eafa0c2be3d87a *DESCRIPTION
+da17a2e295dc0e4efe7ef2cc34107a83 *DESCRIPTION
 b002c479a1f685bfaceb9f34cca3210a *NAMESPACE
-c57ccaf8fb09159ef266ee936a66a722 *NEWS
+78cdd21a2e0cfa05fee975e686d6a3ed *NEWS
 0cb48873f13b9e671ac044178144d7c9 *R/fit.r
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
@@ -17,8 +17,8 @@ a939661fcde73b3456057e528cba72ad *R/zzz.r
 411f1c64d4a679e27d13594353efd70e *TODO
 131a236039d88977475269c6ee6c6e2c *cleanup
 131a236039d88977475269c6ee6c6e2c *cleanup.win
-66453a54e7c5b0c9fbaf4c95ed2006cf *configure
-d7cb19e10dcc837e30bcfc2ebb3920dd *configure.ac
+f7f872b0c401e031526919f673d16995 *configure
+67ea52c4286fb7357a10f15e741f8567 *configure.ac
 64b8b3be11da0fbb03938584979cd8b3 *configure.win
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
@@ -42,7 +42,7 @@ af8e89459cb4e53858b0b46db4638b8f *man/pearsonMSC.Rd
 838bd9027d171801d28dd701ea943620 *src/F21DD.c
 efa874fa82ec9729e3c9a144e2af28b9 *src/F21QD.c
 a3e16ba2ab4a45a25bc69a933576dd40 *src/QuadDouble.c
-0bda3d11793321211b1f611d0db2c300 *src/config.h.in
+536f4fe1e6c2758cbc840611fedf3e71 *src/config.h.in
 2d4ba98022e8ae19d691c55db51976fd *src/pearson.c
 97674869bed57746e7fa771d80aae22a *src/pearson.h
 017b356591fd248bda19477807449216 *src/pearsonIV.c

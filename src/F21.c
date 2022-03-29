@@ -30,7 +30,7 @@ SEXP F21D(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
   for (int i=0; i<n; i++) {
     curra = a; currb = b; currc = c; currsum.r = 1.; currsum.i = 0.;
     tres  = currsum; maxsum = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = CMult(currsum,curra);
       currsum = CMult(currsum,currb);
@@ -82,7 +82,7 @@ SEXP F21Da1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
   for (int i=0; i<n; i++) {
     currb = b; currc = c; currsum.r = 1.; currsum.i = 0.;
     tres  = currsum; maxsum = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = CMult(currsum,currb);
       currsum = CDivR(currsum,currc);
@@ -131,7 +131,7 @@ SEXP F21Da1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
   for (int i=0; i<n; i++) {
     currb = b; currc = c; currsum.r = 1.; currsum.i = 0.;
     tres  = currsum; maxsum = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = CMultR(currsum,currb);
       currsum = CDiv(currsum,currc);
@@ -181,7 +181,7 @@ SEXP F21DaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
   for (int i=0; i<n; i++) {
     curra = a; currb = b; currc = c; currsum.r = 1.; currsum.i = 0.;
     tres  = currsum; maxsum = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = CMultR(currsum,curra);
       currsum = CMult(currsum,currb);

@@ -1,3 +1,10 @@
+Changes in version 1.2.2 (2022-03-29)
+
+Bug fixes:
+
+- replaced deprecated legacy S-compatibility macro DOUBLE_EPS. Many thanks to 
+  Prof Brian Ripley for the report and the instructions for solving the issue.
+
 Changes in version 1.2.1 (2021-10-06)
 
 Bug fixes:

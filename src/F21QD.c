@@ -4,6 +4,7 @@
 #include <R_ext/Applic.h>
 #include <Rmath.h>
 #include "pearson.h"
+#include <float.h>
 
 double StopCritQD (QDcomplex qd1, QDcomplex qd2) {
   return(fmax2(fabs(qd2d(qd1.r)),fabs(qd2d(qd1.i)))/
@@ -47,7 +48,7 @@ SEXP F21QD(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.v[0] = 0.; tres.i.v[1] = 0.; tres.i.v[2] = 0.; tres.i.v[3] = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = QDMultC(currsum,curra);
       currsum = QDMultC(currsum,currb);
@@ -115,7 +116,7 @@ SEXP F21QDa1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.v[0] = 0.; tres.i.v[1] = 0.; tres.i.v[2] = 0.; tres.i.v[3] = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = QDMultC(currsum,currb);
       currsum = QDDivR(currsum,currc);
@@ -180,7 +181,7 @@ SEXP F21QDa1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.v[0] = 0.; tres.i.v[1] = 0.; tres.i.v[2] = 0.; tres.i.v[3] = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = QDMultR(currsum,currb);
       currsum = QDDivC(currsum,currc);
@@ -246,7 +247,7 @@ SEXP F21QDaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.v[0] = 0.; tres.i.v[1] = 0.; tres.i.v[2] = 0.; tres.i.v[3] = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritQD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = QDMultR(currsum,curra);
       currsum = QDMultC(currsum,currb);

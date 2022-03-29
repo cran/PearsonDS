@@ -4,6 +4,7 @@
 #include <R_ext/Applic.h>
 #include <Rmath.h>
 #include "pearson.h"
+#include <float.h>
 
 double StopCritDD (DDcomplex dd1, DDcomplex dd2) {
   return(fmax2(fabs(dd2d(dd1.r)),fabs(dd2d(dd1.i)))/
@@ -47,7 +48,7 @@ SEXP F21DD(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.r = 0.; tres.i.e = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = DDMultC(currsum,curra);
       currsum = DDMultC(currsum,currb);
@@ -115,7 +116,7 @@ SEXP F21DDa1cR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.r = 0.; tres.i.e = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = DDMultC(currsum,currb);
       currsum = DDDivR(currsum,currc);
@@ -180,7 +181,7 @@ SEXP F21DDa1bR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.r = 0.; tres.i.e = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = DDMultR(currsum,currb);
       currsum = DDDivC(currsum,currc);
@@ -246,7 +247,7 @@ SEXP F21DDaR(SEXP A, SEXP B, SEXP C, SEXP Z, SEXP Minit, SEXP Maxit) {
     tres.i.r = 0.; tres.i.e = 0.;
     currsum = tres;
     maxsum  = 1.;
-    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DOUBLE_EPS)); f=f+1.) {
+    for (f = 1.; (f<minit)||((f<maxit)&&(StopCritDD(currsum,tres)>DBL_EPSILON)); f=f+1.) {
       R_CheckUserInterrupt();
       currsum = DDMultR(currsum,curra);
       currsum = DDMultC(currsum,currb);

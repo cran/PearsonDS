@@ -11,6 +11,7 @@
 #include <R_ext/Applic.h>
 #include <Rmath.h>
 #include "pearson.h"
+#include <float.h>
 
 double gammar2(double x,double y) {
   /* returns abs(gamma(x+iy)/gamma(x))^2 */
@@ -20,7 +21,7 @@ double gammar2(double x,double y) {
     const double t = y/x++;
     r *= 1 + t*t;
   }
-  while (p > s*DOUBLE_EPS) {
+  while (p > s*DBL_EPSILON) {
     p *= y2 + f*f;
     p /= x++ * ++f;
     s += p;
@@ -36,7 +37,7 @@ double loggammar2(double x,double y) {
     const double t = y/x++;
     r += log(1 + t*t);
   }
-  while (p > s*DOUBLE_EPS) {
+  while (p > s*DBL_EPSILON) {
     p *= y2 + f*f;
     p /= x++ * ++f;
     s += p;

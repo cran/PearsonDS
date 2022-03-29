@@ -1,5 +1,5 @@
 AC_PREREQ([2.69])
-AC_INIT([PearsonDS],[0.91],[m@rtinbecker.de])
+AC_INIT([PearsonDS],[1.2.2],[m@rtinbecker.de])
 AC_CONFIG_SRCDIR([src/QuadDouble.c]) ## representative source file
 AC_CONFIG_HEADERS([src/config.h])     ## Autoheader is used
 

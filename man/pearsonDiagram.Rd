@@ -48,7 +48,7 @@ pearsonDiagram(max.skewness = sqrt(14), max.kurtosis = 24,
 }
 \author{
 Martin Becker \email{martin.becker@mx.uni-saarland.de} and
-Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
+Stefan KlÃ¶ÃŸner \email{S.Kloessner@mx.uni-saarland.de}
 
 }
 \seealso{

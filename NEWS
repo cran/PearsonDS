@@ -1,3 +1,15 @@
+Changes in version 1.2.3 (2022-10-20)
+
+Small changes:
+
+- changed encoding to UTF-8.
+
+Bug fixes:
+
+- fixed compiler note about missing prototype.
+
+- fixed wrong character in comment.
+
 Changes in version 1.2.2 (2022-03-29)
 
 Bug fixes:

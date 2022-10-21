@@ -1,7 +1,7 @@
 /* Code (partially) adapted from
    CDF/MEMO/STATISTICS/PUBLIC/6820
    A Guide to the Pearson Type IV Distribution
-   Joel Heinrich—University of Pennsylvania
+   Joel Heinrich - University of Pennsylvania
    December 21, 2004
 */      
 

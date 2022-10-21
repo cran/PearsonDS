@@ -23,7 +23,7 @@ Pearson Distribution System
 }
 \author{
 Martin Becker \email{martin.becker@mx.uni-saarland.de} 
-and Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de}
+and Stefan KlÃ¶ÃŸner \email{S.Kloessner@mx.uni-saarland.de}
 
 Maintainer: Martin Becker \email{martin.becker@mx.uni-saarland.de}
 }

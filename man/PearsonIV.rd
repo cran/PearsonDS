@@ -170,7 +170,7 @@ rpearsonIV(n, m, nu, location, scale, params)
 }
 \author{
 Martin Becker \email{martin.becker@mx.uni-saarland.de},
-Stefan Klößner \email{S.Kloessner@mx.uni-saarland.de} and
+Stefan KlÃ¶ÃŸner \email{S.Kloessner@mx.uni-saarland.de} and
 Joel Heinrich
 }
 \seealso{

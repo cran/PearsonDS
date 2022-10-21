@@ -97,7 +97,7 @@ QDcomplex QDAdd(QDcomplex A, QDcomplex B);
 QDcomplex QDAddR(QDcomplex A, double B);
 QDcomplex QDAdd1(QDcomplex A);
 double QDnormInf(QDcomplex A);
-void FPUcheck();
+double FPUcheck(void);
 
 // DoubleDouble.c
 double dd2d (ddouble a);

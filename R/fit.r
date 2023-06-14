@@ -110,6 +110,7 @@ pearsonVIIfindM <- function(mean,variance,skewness,kurtosis,moments) {
 }
 
 empMoments <- function(x) {
+  if (anyNA(x)) return(c(mean=NA,variance=NA,skewness=NA,kurtosis=NA))
   n <- length(x)
   mmm <- mean(x)
   vvv <- var(x)*(n-1)/n

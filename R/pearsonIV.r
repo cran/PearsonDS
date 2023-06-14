@@ -8,7 +8,7 @@ function(x,m,nu,location,scale,params,log=FALSE) {
     stop("vector-valued parameters not (yet) allowed")                        
   if ((scale>0)&&(m>0.5)) {
 #  stopifnot((scale>0)&&(m>0.5))
-    .hasGSL <- requireNamespace("gsl")
+    .hasGSL <- requireNamespace("gsl", quietly=TRUE)
     logspace <- TRUE                                                              # make this an input parameter?
     if (logspace) {
       if (.hasGSL) {
@@ -47,7 +47,7 @@ function(n,m,nu,location,scale,params) {
   if (!missing(params)) { m <- params[[1]]; nu <- params[[2]]; 
                           location <- params[[3]]; scale <- params[[4]] }
 #  stopifnot((scale>0)&&(m>0.5))
-  .hasGSL <- requireNamespace("gsl")
+  .hasGSL <- requireNamespace("gsl", quietly=TRUE)
   logspace <- TRUE                                                              # make this an input parameter?
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")                        
@@ -180,7 +180,7 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
 #  stopifnot((scale>0)&&(m>0.5))
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")
-  .hasGSL <- requireNamespace("gsl")
+  .hasGSL <- requireNamespace("gsl", quietly=TRUE)
   modus <- location - scale*nu/(2*m)
   res   <- numeric(length(q))
   ind   <- q>modus
@@ -227,7 +227,7 @@ function(q,m,nu,location,scale,params,lower.tail=TRUE,log.p=FALSE,tol=1e-8,...) 
   if (max(length(m),length(nu),length(location),length(scale))>1)
     stop("vector-valued parameters not (yet) allowed")      
   if ((scale>0)&&(m>0.5)) {
-    .hasGSL <- requireNamespace("gsl")
+    .hasGSL <- requireNamespace("gsl", quietly=TRUE)
     res <- numeric(length(q))
     res[is.na(q)] <- q[is.na(q)]                    
     if (!all(is.na(q))) {

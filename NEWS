@@ -1,3 +1,12 @@
+Changes in version 1.2.4 (2023-06-14)
+
+Small changes:
+
+- empMoments(x) now returns NA if x contains missing values.
+
+- a misleading error message (in case package gsl is not installed) has been
+  removed.
+
 Changes in version 1.2.3 (2022-10-20)
 
 Small changes:

@@ -1,7 +1,8 @@
-c4116f594c79f4c7fe34c2f22ce87154 *DESCRIPTION
-b002c479a1f685bfaceb9f34cca3210a *NAMESPACE
-44319b1f557f1f95edcff468f7c0e599 *NEWS
+6ace1b621cc8653bd45dcb18d5eeb9e8 *DESCRIPTION
+d76719624d275ed777293e64f6c14f4f *NAMESPACE
+55650d10cb85d02a4a1825e196b25aa7 *NEWS
 cbefdca708ec33c09e62218a0995612a *R/fit.r
+7beda1a3c47750a743d9d8f4aebd5009 *R/matchMoments.R
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
 84ac5c9d238c362ccffb38c17692344c *R/pearson.r
 5483ad4de2ad80349e10cd1ce462a50f *R/pearson0.r
@@ -31,6 +32,7 @@ ee7b151e9e7e5287a3ae1e19df8647c6 *man/PearsonV.rd
 d1b9cd9436bbb024a0a3d3c662be3a0a *man/PearsonVI.rd
 733307a1974824c76f82496b0c194d76 *man/PearsonVII.rd
 c08a4e4f690cb2762a1910adcda52108 *man/empMoments.Rd
+0717afcae59051b0e8b4bfdcee1095b6 *man/matchMoments.Rd
 a49156b3a20db1e8a007b6a6ca7e8285 *man/pearsonDiagram.Rd
 6c5f8421e456283c3e7c94565802a9a6 *man/pearsonFitM.Rd
 3a142368a7169ca4eb192036c48f141f *man/pearsonFitML.Rd

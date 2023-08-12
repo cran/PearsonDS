@@ -1,3 +1,12 @@
+Changes in version 1.3.0 (2023-08-12)
+
+New features:
+
+- new function matchMoments that completes (incomplete) sets of moments by 
+  completing them for a given distribution type (if possible) and returning 
+  the complete set of moments or the resulting distribution..
+  (suggestion/wish from Michael Koohafkan) 
+
 Changes in version 1.2.4 (2023-06-14)
 
 Small changes:

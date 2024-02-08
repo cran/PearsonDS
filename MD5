@@ -1,6 +1,6 @@
-6ace1b621cc8653bd45dcb18d5eeb9e8 *DESCRIPTION
+2eb8476228ee43fd05d331b6aa9aa1e3 *DESCRIPTION
 d76719624d275ed777293e64f6c14f4f *NAMESPACE
-55650d10cb85d02a4a1825e196b25aa7 *NEWS
+33c302f67adc998183a5a395bc6aaf9e *NEWS
 cbefdca708ec33c09e62218a0995612a *R/fit.r
 7beda1a3c47750a743d9d8f4aebd5009 *R/matchMoments.R
 39a0f796ab7b5df33a7a5fce14763ed1 *R/moments.r
@@ -20,7 +20,7 @@ a939661fcde73b3456057e528cba72ad *R/zzz.r
 131a236039d88977475269c6ee6c6e2c *cleanup.win
 f7f872b0c401e031526919f673d16995 *configure
 0a96c8cdd92195a6def0021faa29b706 *configure.ac
-64b8b3be11da0fbb03938584979cd8b3 *configure.win
+c44b4295b2528c9970b6f709a4cda075 *configure.win
 0365c1e6268178cb98c5db952f47026d *man/Pearson.rd
 e264d9163b8245307fb5d66379b2d662 *man/Pearson0.rd
 f5edc99c153a658e2a3835eb1b749ec7 *man/PearsonDS.rd

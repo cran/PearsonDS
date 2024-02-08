@@ -1,3 +1,11 @@
+Changes in version 1.3.1 (2024-02-08)
+
+Bug fixes:
+
+- Windows builds were limited to x86_64 CPUs due to an an oversimplified 
+  configure script. Many thanks to Tomas Kalibera for not only pointing out 
+  the problem, but also for providing a patch.
+
 Changes in version 1.3.0 (2023-08-12)
 
 New features:
